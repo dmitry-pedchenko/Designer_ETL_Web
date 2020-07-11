@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<main>
+    <dbtype>mysql</dbtype> <!-- mssql/mysql -->
+    <dbHost>localhost</dbHost> <!-- host ip / name-->
+    <dbUser>root</dbUser> <!-- user -->
+    <dbPass>P@$$w0rd</dbPass> <!-- password -->
+    <dbBase>educ</dbBase> <!-- database name -->
+    <dbPort>3306</dbPort> <!-- port -->
+    <loadMode>insert</loadMode> <!-- insert / update -->
+    <dict>false</dict> <!-- true/ false -->
+    <checkMode>false</checkMode> <!-- true/false -->
+
+    <importXml> <!-- configure source excel file -->
+        <path>loc_test_dic.xlsx</path> <!-- Excel file name.xlsx -->
+        <sheetNumber>1</sheetNumber> <!-- List number in excel [1... ] -->
+
+        <columns>
+
+            <column>
+                <colName>dict_1_1</colName> <!-- column name in excel -->
+                <colNameDb>col_1</colNameDb> <!-- colum name in db -->
+                <colType>str</colType> <!-- str / int / float -->
+                <isPK>false</isPK> <!-- true/ false -->
+                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value,value</addValueBegin> -->
+                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>dict_1_2</colName> <!-- column name in excel -->
+                <colNameDb>col_2</colNameDb> <!-- colum name in db -->
+                <colType>str</colType> <!-- str / int / float -->
+                <isPK>false</isPK> <!-- true/ false -->
+                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value,value</addValueBegin> -->
+                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>dict_1_3</colName> <!-- column name in excel -->
+                <colNameDb>col_3</colNameDb> <!-- colum name in db -->
+                <colType>date</colType> <!-- str / int / float -->
+                <isPK>false</isPK> <!-- true/ false -->
+                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value,value</addValueBegin> -->
+                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+        </columns>
+
+
+        <linkedColumns mode="false"></linkedColumns>
+
+        <withDict mode="false"></withDict>
+
+    </importXml>
+
+    <exportTable> <!-- configure receiver data base columns -->
+        <path>dic_1</path>            <!-- receiver data base table name [dbo].[name] -->
+
+        <columns>
+
+            <column>
+                <name>col_1</name>                                <!-- column name in database -->
+                <fromExcel>true</fromExcel>                  <!-- true/ false -->
+                <fromDb>false</fromDb>                       <!-- true/ false -->
+                <isAutoInc>false</isAutoInc>                 <!-- true/ false -->
+                <isConc>false</isConc>                       <!-- true/ false -->
+                <defaultValue mode="false"></defaultValue>   <!-- <defaultValue mode="false/tue">value</defaultValue> -->
+                <colType>str</colType>                       <!-- str / int -->
+                <isUpdateCondition>false</isUpdateCondition> <!-- true/ false -->
+                <ifNull mode="false"></ifNull>               <!-- mode =  true/ false -->
+            </column>
+
+            <column>
+                <name>col_2</name>                                <!-- column name in database -->
+                <fromExcel>true</fromExcel>                  <!-- true/ false -->
+                <fromDb>false</fromDb>                       <!-- true/ false -->
+                <isAutoInc>false</isAutoInc>                 <!-- true/ false -->
+                <isConc>false</isConc>                       <!-- true/ false -->
+                <defaultValue mode="false"></defaultValue>   <!-- <defaultValue mode="false/tue">value</defaultValue> -->
+                <colType>str</colType>                       <!-- str / int -->
+                <isUpdateCondition>false</isUpdateCondition> <!-- true/ false -->
+                <ifNull mode="false"></ifNull>                 <!-- mode =  true/ false -->
+            </column>
+
+            <column>
+                <name>col_3</name>                                <!-- column name in database -->
+                <fromExcel>true</fromExcel>                  <!-- true/ false -->
+                <fromDb>false</fromDb>                       <!-- true/ false -->
+                <isAutoInc>false</isAutoInc>                 <!-- true/ false -->
+                <isConc>false</isConc>                       <!-- true/ false -->
+                <defaultValue mode="false"></defaultValue>   <!-- <defaultValue mode="false/tue">value</defaultValue> -->
+                <colType>str</colType>                       <!-- str / int -->
+                <isUpdateCondition>false</isUpdateCondition> <!-- true/ false -->
+                <ifNull mode="false"></ifNull>                 <!-- mode =  true/ false -->
+            </column>
+
+            <column>
+                <name>indx</name>                                <!-- column name in database -->
+                <fromExcel>false</fromExcel>                  <!-- true/ false -->
+                <fromDb>false</fromDb>                       <!-- true/ false -->
+                <isAutoInc>true</isAutoInc>                 <!-- true/ false -->
+                <isConc>false</isConc>                       <!-- true/ false -->
+                <defaultValue mode="false"></defaultValue>   <!-- <defaultValue mode="false/tue">value</defaultValue> -->
+                <colType>str</colType>                       <!-- str / int -->
+                <isUpdateCondition>false</isUpdateCondition> <!-- true/ false -->
+                <ifNull mode="false"></ifNull>                 <!-- mode =  true/ false -->
+            </column>
+
+        </columns>
+    </exportTable>
+</main>
+
+<!-- -->

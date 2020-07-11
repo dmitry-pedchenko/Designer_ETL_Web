@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+
+<main>
+    <dbtype>mssql</dbtype>
+    <dbHost>db-server.isl.local</dbHost>
+    <dbUser>sa</dbUser>
+    <dbPass>123</dbPass>
+    <dbBase>CCURSB</dbBase>
+    <dbSchema>dbo</dbSchema>
+    <dbPort>1433</dbPort>
+    <loadMode>insert</loadMode> <!-- insert / update -->
+    <dict>false</dict> <!-- true/ false -->
+    <checkMode>false</checkMode>
+
+    <importXml>
+        <path>BAccount.xlsx</path>
+        <sheetNumber>2</sheetNumber>
+
+        <columns>
+
+            <column>
+                <colName>TreeKindCode</colName>
+                <colNameDb>TreeKindCode</colNameDb>
+                <colType>str</colType>
+                <isPK>true</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>Code</colName>
+                <colNameDb>Code</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false">
+
+                </replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>Name</colName>
+                <colNameDb>Name</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>Parent</colName>
+                <colNameDb>Parent</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="true">
+
+                    <f_cropEnd mode="false"></f_cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                    <f_addValueEnd mode="true">qwe</f_addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                    <f_takeFromBegin mode="false"></f_takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                    <f_cropBegin mode="false"></f_cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                    <f_addValueBegin mode="false"></f_addValueBegin> <!-- <addValueBegin mode="true/ false">value,value</addValueBegin> -->
+                    <f_addValueBoth mode="false"></f_addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+
+                    <filterVal>
+                        <filterMode>=</filterMode>      <!-- != = > < <= >= -->
+                        <filterValue>2000</filterValue>    <!-- value -->
+                    </filterVal>
+
+                    <!-- ...  -->
+
+                </filter>
+                <post-filter mode="false">
+                    <postfilterVal>
+                        <filterMode>=</filterMode>      <!-- != = > < <= >= -->
+                        <filterValue>123</filterValue>    <!-- value -->
+                    </postfilterVal>
+                </post-filter>
+            </column>
+
+        </columns>
+
+
+        <linkedColumns mode="true">
+            <pathToLinkFile>BAccount.xlsx</pathToLinkFile> <!-- excel file name.xlsx -->
+            <linkedFileSheetNumber>2</linkedFileSheetNumber> <!-- List number in excel [1... ] -->
+            <both>true</both>                                   <!-- true / false -->
+
+            <column>
+                <linkedColName>Code</linkedColName> <!-- column name in excel file to compare -->
+                <colNameInSource>Code</colNameInSource> <!-- column name in source excel -->
+            </column>
+
+        </linkedColumns>
+
+        <withDict mode="false"></withDict>
+
+
+    </importXml>
+
+    <exportTable>
+        <path>BAccountTree</path>
+        <columns>
+
+            <column>
+                <name>TreeKindCode</name>
+                <isConc>false</isConc>
+                <isAutoInc>false</isAutoInc>
+                <fromExcel>true</fromExcel>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <ifNull mode="true">null</ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+            <column>
+                <name>Code</name>
+                <isConc>false</isConc>
+                <isAutoInc>false</isAutoInc>
+                <fromExcel>true</fromExcel>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <ifNull mode="true">null</ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+            <column>
+                <name>Name</name>
+                <isConc>false</isConc>
+                <isAutoInc>false</isAutoInc>
+                <fromExcel>true</fromExcel>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <ifNull mode="false"></ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+            <column>
+                <name>Parent</name>
+                <isConc>false</isConc>
+                <isAutoInc>false</isAutoInc>
+                <fromExcel>true</fromExcel>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <ifNull mode="true">null</ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+            <column>
+                <name>AccSortCode</name>
+                <isConc>false</isConc>
+                <isAutoInc>false</isAutoInc>
+                <fromExcel>false</fromExcel>
+                <defaultValue mode="true">null</defaultValue>
+                <colType>int</colType>
+                <ifNull mode="false"></ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+            <column>
+                <name>IDC</name>
+                <isConc>false</isConc>
+                <isAutoInc>true</isAutoInc>
+                <fromExcel>false</fromExcel>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <ifNull mode="false"></ifNull>
+                <fromDb>false</fromDb>
+                <isUpdateCondition>false</isUpdateCondition>
+            </column>
+
+        </columns>
+    </exportTable>
+</main>

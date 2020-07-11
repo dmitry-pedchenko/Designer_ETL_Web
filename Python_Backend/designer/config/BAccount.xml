@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+
+<main>
+    <dbtype>mssql</dbtype>
+    <dbHost>db-server.isl.local</dbHost>
+    <dbUser>sa</dbUser>
+    <dbPass>123</dbPass>
+    <dbBase>CCURSB</dbBase>
+    <dbSchema>dbo</dbSchema>
+    <dbPort>1433</dbPort>
+    <loadMode>insert</loadMode> <!-- insert / update -->
+    <dict>true</dict> <!-- true/ false -->
+    <checkMode>false</checkMode>
+
+    <importXml>
+        <path>AccTreeAssoc.xlsx</path>
+        <sheetNumber>2</sheetNumber>
+
+        <columns>
+
+            <column>
+                <colName>Code</colName>
+                <colNameDb>Code</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>Name</colName>
+                <colNameDb>Name</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="true">255</takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>ProtectionKindCode</colName>
+                <colNameDb>ProtectionKindCode</colNameDb>
+                <colType>int</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>IsDirectCost</colName>
+                <colNameDb>IsDirectCost</colNameDb>
+                <colType>int</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="true">
+                    <replaceVal>
+                        <value>1</value>
+                        <toValue>*</toValue>
+                    </replaceVal>
+                    <replaceVal>
+                        <value>0</value>
+                        <toValue> </toValue>
+                    </replaceVal>
+                </replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>PLAccountB</colName>
+                <colNameDb>PLAccountB</colNameDb>
+                <colType>int</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>PLAccountF</colName>
+                <colNameDb>PLAccountF</colNameDb>
+                <colType>int</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>VATCode</colName>
+                <colNameDb>VATCode</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>SrvDepCode</colName>
+                <colNameDb>SrvDepCode</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+            <column>
+                <colName>Name</colName>
+                <colNameDb>Note</colNameDb>
+                <colType>str</colType>
+                <isPK>false</isPK>
+                <cropEnd mode="false"></cropEnd>
+                <addValueEnd mode="false"></addValueEnd>
+                <takeFromBegin mode="false"></takeFromBegin>
+                <cropBegin mode="false"></cropBegin>
+                <addValueBegin mode="false"></addValueBegin>
+                <addValueBoth mode="false"></addValueBoth>
+                <replace mode="false"></replace>
+                <filter mode="false"></filter>
+                <post-filter mode="false"></post-filter>
+            </column>
+
+        </columns>
+
+
+        <linkedColumns mode="false"></linkedColumns>
+
+        <withDict mode="true"> <!-- true/ false" -->
+
+            <tables>
+
+                <table>
+                    <dictTableName>BAccountMap</dictTableName> <!-- table name in data base -->
+                    <indxDbColumn>IDC</indxDbColumn> <!-- index column name in receiver -->
+                    <indxColumnDic>IDC</indxColumnDic> <!-- index column name in dictionary -->
+
+                        <columns>
+
+                            <column>
+                                <colName>Code</colName> <!-- column name in excel -->
+                                <colNameDb>AccSortCode</colNameDb> <!-- colum name in db -->
+                                <colType>str</colType> <!-- str / int / float / date -->
+                                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value</addValueBegin> -->
+                                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                                <replace mode="true">
+                                    <replaceVal>
+                                        <value>1</value>                     <!--value-->
+                                        <toValue>2</toValue>                 <!--value-->
+                                    </replaceVal>
+                                    <replaceVal>
+                                        <value>a</value>                     <!--value-->
+                                        <toValue>b</toValue>                 <!--value-->
+                                    </replaceVal>
+                                </replace>
+                            </column>
+
+
+                            <column>
+                                <colName>Name</colName> <!-- column name in excel -->
+                                <colNameDb>Name</colNameDb> <!-- colum name in db -->
+                                <colType>str</colType> <!-- str / int / float / date -->
+                                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value</addValueBegin> -->
+                                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                                <replace mode="false"></replace>
+                            </column>
+
+
+                            <column>
+                                <colName>TreeKindCode</colName> <!-- column name in excel -->
+                                <colNameDb>Code</colNameDb> <!-- colum name in db -->
+                                <colType>str</colType> <!-- str / int / float / date -->
+                                <cropEnd mode="false"></cropEnd> <!-- <cropEnd mode="true/ false">value</cropEnd> -->
+                                <addValueEnd mode="false"></addValueEnd> <!-- <addValueEnd mode="true/ false">value</addValueEnd> -->
+                                <takeFromBegin mode="false"></takeFromBegin> <!-- <takeFromBegin mode="true/ false">value</takeFromBegin> -->
+                                <cropBegin mode="false"></cropBegin> <!-- <cropBegin mode="true/ false">value</cropBegin> -->
+                                <addValueBegin mode="false"></addValueBegin> <!-- <addValueBegin mode="true/ false">value</addValueBegin> -->
+                                <addValueBoth mode="false"></addValueBoth> <!-- <addValueBoth mode="true/ false">value</addValueBoth> -->
+                                <replace mode="false"></replace>
+                            </column>
+
+
+                        </columns>
+                </table>
+
+            </tables>
+        </withDict>
+
+
+
+    </importXml>
+
+    <exportTable>
+        <path>BAccount</path>
+        <columns>
+
+            <column>
+                <name>Name</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>Code</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>true</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>AccSortCode</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="true">null</defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="false"></ifNull>
+            </column>
+
+            <column>
+                <name>IsDirectCost</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>ProtectionKindCode</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>VATCode</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>VATAccountCode</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="true">null</defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="false"></ifNull>
+            </column>
+
+            <column>
+                <name>PLAccountB</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>PLAccountF</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>UserCode</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="true">null</defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="false"></ifNull>
+            </column>
+
+            <column>
+                <name>CuratorDepCode</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="true">null</defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="false"></ifNull>
+            </column>
+
+            <column>
+                <name>SrvDepCode</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>Note</name>
+                <fromExcel>true</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>IDC</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>true</fromDb>
+                <isAutoInc>true</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="false"></defaultValue>
+                <colType>int</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="true">null</ifNull>
+            </column>
+
+            <column>
+                <name>IsASUP</name>
+                <fromExcel>false</fromExcel>
+                <fromDb>false</fromDb>
+                <isAutoInc>false</isAutoInc>
+                <isConc>false</isConc>
+                <defaultValue mode="true"> </defaultValue>
+                <colType>str</colType>
+                <isUpdateCondition>false</isUpdateCondition>
+                <ifNull mode="false"></ifNull>
+            </column>
+
+        </columns>
+    </exportTable>
+</main>

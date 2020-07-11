@@ -1,0 +1,167 @@
+<main>
+	<importXml>
+		<columns>
+			<column>
+				<colName>col_1</colName>
+				<colNameDb>val_1</colNameDb>
+				<colType>str</colType>
+				<isPK>false</isPK>
+				<cropEnd mode="false" />
+				<addValueEnd mode="false" />
+				<takeFromBegin mode="false" />
+				<cropBegin mode="false" />
+				<addValueBegin mode="false" />
+				<addValueBoth mode="false" />
+				<replace mode="true">
+					<replaceVal>
+						<value>1</value>
+						<toValue>2</toValue>
+					</replaceVal>
+					<replaceVal>
+						<value>a</value>
+						<toValue>b</toValue>
+					</replaceVal>
+				</replace>
+				<filter mode="false" />
+				<post-filter mode="false" />
+			</column>
+			<column>
+				<colName>col_2</colName>
+				<colNameDb>val_2</colNameDb>
+				<colType>date</colType>
+				<isPK>false</isPK>
+				<cropEnd mode="false" />
+				<addValueEnd mode="false" />
+				<takeFromBegin mode="false" />
+				<cropBegin mode="false" />
+				<addValueBegin mode="false" />
+				<addValueBoth mode="false" />
+				<replace mode="false" />
+				<filter mode="true">
+					<f_cropEnd mode="false" />
+					<f_addValueEnd mode="false" />
+					<f_takeFromBegin mode="false" />
+					<f_cropBegin mode="false" />
+					<f_addValueBegin mode="false" />
+					<f_addValueBoth mode="false" />
+					<filterVal>
+						<filterMode>=</filterMode>
+						<filterValue>2005.01.01</filterValue>
+					</filterVal>
+				</filter>
+				<post-filter mode="false" />
+			</column>
+			<column>
+				<colName>col_3</colName>
+				<colNameDb>val_3</colNameDb>
+				<colType>str</colType>
+				<isPK>false</isPK>
+				<cropEnd mode="false" />
+				<addValueEnd mode="false" />
+				<takeFromBegin mode="false" />
+				<cropBegin mode="false" />
+				<addValueBegin mode="false" />
+				<addValueBoth mode="false" />
+				<replace mode="false" />
+				<filter mode="false" />
+				<post-filter mode="false" />
+			</column>
+		</columns>
+		<linkedColumns mode="false" />
+		<withDict mode="true">
+			<tables>
+				<table>
+					<dictTableName>dic_1</dictTableName>
+					<indxDbColumn>id_1</indxDbColumn>
+					<indxColumnDic>id</indxColumnDic>
+					<columns>
+						<column>
+							<colName>col_2</colName>
+							<colNameDb>id</colNameDb>
+							<colType>str</colType>
+							<cropEnd mode="false" />
+							<addValueEnd mode="false" />
+							<takeFromBegin mode="false" />
+							<cropBegin mode="false" />
+							<addValueBegin mode="false" />
+							<addValueBoth mode="false" />
+							<replace mode="false" />
+						</column>
+					</columns>
+				</table>
+			</tables>
+		</withDict>
+		<path>loc_test_dic.xlsx</path>
+		<sheetNumber>1</sheetNumber>
+	</importXml>
+	<exportTable>
+		<columns>
+			<column>
+				<name>val_1</name>
+				<fromExcel>true</fromExcel>
+				<fromDb>false</fromDb>
+				<isAutoInc>false</isAutoInc>
+				<isConc>false</isConc>
+				<defaultValue mode="false" />
+				<colType>str</colType>
+				<isUpdateCondition>false</isUpdateCondition>
+				<ifNull mode="false" />
+			</column>
+			<column>
+				<name>val_2</name>
+				<fromExcel>true</fromExcel>
+				<fromDb>false</fromDb>
+				<isAutoInc>false</isAutoInc>
+				<isConc>false</isConc>
+				<defaultValue mode="false" />
+				<colType>str</colType>
+				<isUpdateCondition>false</isUpdateCondition>
+				<ifNull mode="false" />
+			</column>
+			<column>
+				<name>val_3</name>
+				<fromExcel>true</fromExcel>
+				<fromDb>false</fromDb>
+				<isAutoInc>false</isAutoInc>
+				<isConc>false</isConc>
+				<defaultValue mode="false" />
+				<colType>str</colType>
+				<isUpdateCondition>false</isUpdateCondition>
+				<ifNull mode="false" />
+			</column>
+			<column>
+				<name>id_1</name>
+				<fromExcel>false</fromExcel>
+				<fromDb>true</fromDb>
+				<isAutoInc>false</isAutoInc>
+				<isConc>false</isConc>
+				<defaultValue mode="false" />
+				<colType>int</colType>
+				<isUpdateCondition>false</isUpdateCondition>
+				<ifNull mode="false" />
+			</column>
+			<column>
+				<name>id_2</name>
+				<fromExcel>false</fromExcel>
+				<fromDb>true</fromDb>
+				<isAutoInc>false</isAutoInc>
+				<isConc>false</isConc>
+				<defaultValue mode="false" />
+				<colType>int</colType>
+				<isUpdateCondition>false</isUpdateCondition>
+				<ifNull mode="false" />
+			</column>
+		</columns>
+		<path>main_table</path>
+	</exportTable>
+	<dbtype>mysql</dbtype>
+	<dbHost>localhost</dbHost>
+	<dbSchema>designer_etl</dbSchema>
+	<dbUser>root</dbUser>
+	<dbPass>P@$$w0rd</dbPass>
+	<dbBase>designer_etl</dbBase>
+	<dbPort>3306</dbPort>
+	<loadMode>update</loadMode>
+	<dict>true</dict>
+	<checkMode>false</checkMode>
+</main>

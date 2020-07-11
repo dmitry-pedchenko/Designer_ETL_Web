@@ -1,0 +1,1 @@
+pyuic5 setup_db_widget.ui -o form_preferences.py -x

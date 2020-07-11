@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets, QtCore
-import GUI.gui_qt.loader as loader
+import gui_qt.loader as loader
 import os
 import platform
 import subprocess
 from Core.Main_excel_parser import MainLoader
-from GUI.Windows import alarm_window
-from GUI.Windows.alarm_window import show_alarm_window
-from GUI.Windows.error_window import show_error_window
+from Windows import alarm_window
+from Windows.alarm_window import show_alarm_window
+from Windows.error_window import show_error_window
 
 
 class EasyLoader(QtWidgets.QWidget, loader.Ui_Form):

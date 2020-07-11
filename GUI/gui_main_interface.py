@@ -8,28 +8,29 @@
 """
 
 
-from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5 import QtWidgets, QtCore
 import sys
 import os
 sys.path.append((os.getcwd()))
 from PyQt5.QtCore import pyqtSlot
-from GUI.gui_qt import main_window
-from GUI.Creators import source_column_editor_viewer, target_column_editor_viewer
-
+from gui_qt import main_window
+from Creators import source_column_editor_viewer, target_column_editor_viewer
 from Core.Parser.XML_parser import do_XML_parse as xml_parse
 from Core.Logger import Logger
-from GUI.Trees import Receiver_tree, Dict_tree, Source_tree
-from GUI.Creators.dict_column_editor_viewer import create_dict_column
+from Trees import Receiver_tree, Dict_tree, Source_tree
+from Creators.dict_column_editor_viewer import create_dict_column
 from Core.Validate import Validate_res
 from Core.DAO import XML_DAO as xpc
 import xml.etree.ElementTree as et
-from GUI.DAO.create_xml import CreateXML
-from GUI.Windows.alarm_window import show_alarm_window
-from GUI.Windows.error_window import show_error_window
-from GUI.DAO.connection_db import CreateConnection
-from GUI.Windows import easy_loader, gui_prefernces_controller, wizard_configuration
+from DAO.create_xml import CreateXML
+from Windows.alarm_window import show_alarm_window
+from Windows.error_window import show_error_window
+from DAO.connection_db import CreateConnection
+from Windows import easy_loader, gui_prefernces_controller, wizard_configuration
 from GUI.System.LanguageAdaptor import Adapter
-from GUI.gui_qt import db_connect_editor
+from gui_qt import db_connect_editor
+from gui_qt.LoginWindow import login_window
+import requests as rq
 
 if getattr(sys, 'frozen', False):
     # we are running in a bundle
@@ -38,6 +39,39 @@ if getattr(sys, 'frozen', False):
 else:
     # we are running in a normal Python environment
     bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+class LoginWindow(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = login_window.Ui_Form()
+        self.ui.setupUi(self)
+        self.ui.pushButton_login.clicked.connect(self.login_to_designer)
+        self.status_code = None
+
+    def login_to_designer(self):
+        session = rq.Session()
+        url = f"http://{self.ui.lineEdit_URL.text()}"
+        r = 'response_from_server_is_null'
+        try:
+            token = session.get(url)
+            data = {
+                'login': f'{self.ui.lineEdit_Login.text()}',
+                'password': f'{self.ui.lineEdit_Password.text()}',
+                'csrfmiddlewaretoken': token
+            }
+            r = session.post(url=url, data=data, headers=dict(Referer=url))
+            self.status_code = r.status_code
+        except Exception as e:
+            show_alarm_window(self, "Login failed.", "\nCheck URL !!!")
+
+        if self.status_code == 200:
+            self.close()
+            w = MainWindow()
+            w.show()
+
+        if self.status_code == 400:
+            show_alarm_window(self, "Login failed.")
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -800,6 +834,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    w = MainWindow()
-    w.show()
+    login = LoginWindow()
+    login.show()
     sys.exit(app.exec())
+

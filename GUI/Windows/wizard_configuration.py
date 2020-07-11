@@ -1,22 +1,22 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
-import GUI.gui_qt.form_wizard_page_1 as form_wizard_page_1
-import GUI.gui_qt.form_wizard_page_2 as form_wizard_page_2
-import GUI.gui_qt.form_wizard_page_3 as form_wizard_page_3
-import GUI.gui_qt.form_wizard_page_4 as form_wizard_page_4
-import GUI.gui_qt.form_wizard_page_5 as form_wizard_page_5
-import GUI.gui_qt.form_wizard_page_6 as form_wizard_page_6
-from GUI.Trees import Receiver_tree, Dict_tree, Source_tree
+import gui_qt.form_wizard_page_1 as form_wizard_page_1
+import gui_qt.form_wizard_page_2 as form_wizard_page_2
+import gui_qt.form_wizard_page_3 as form_wizard_page_3
+import gui_qt.form_wizard_page_4 as form_wizard_page_4
+import gui_qt.form_wizard_page_5 as form_wizard_page_5
+import gui_qt.form_wizard_page_6 as form_wizard_page_6
+from Trees import Receiver_tree, Dict_tree, Source_tree
 import xml.dom.minidom as xml_format
 import os
 import pandas as pd
 import Core.DAO.DB_connector as db_con
 from Core.Logger import Logger
 from Core.Validate import Validate_res
-from GUI.Windows.alarm_window import show_alarm_window
-from GUI.Windows.error_window import show_error_window
-from GUI.Creators import source_column_editor_viewer, target_column_editor_viewer
+from Windows.alarm_window import show_alarm_window
+from Windows.error_window import show_error_window
+from Creators import source_column_editor_viewer, target_column_editor_viewer
 import copy
-from GUI.DAO.create_xml import CreateXML
+from DAO.create_xml import CreateXML
 import xml.etree.ElementTree as et
 
 

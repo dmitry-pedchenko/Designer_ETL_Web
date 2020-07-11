@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtGui
-from GUI.Creators.dict_column_editor_viewer import create_dict_column
-from GUI.Creators import dict_column_editor_viewer
-from GUI.Windows.alarm_window import show_alarm_window
+from Creators.dict_column_editor_viewer import create_dict_column
+from Creators import dict_column_editor_viewer
+from Windows.alarm_window import show_alarm_window
 
 
 class DictTree(QtWidgets.QTreeWidget):

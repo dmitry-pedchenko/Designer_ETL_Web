@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets, QtCore
-from GUI.gui_qt import form_preferences
+from gui_qt import form_preferences
 import os
 from PyQt5 import QtGui
 import pandas as pd
-from GUI.Windows.alarm_window import show_alarm_window
+from Windows.alarm_window import show_alarm_window
 
 
 class Pref_Window(QtWidgets.QWidget):

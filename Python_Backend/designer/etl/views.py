@@ -1,6 +1,9 @@
 from django.shortcuts import render
+import os,sys,inspect
+# sys.path.append()
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from django.http import HttpResponse, JsonResponse
-from Core import Main_excel_parser as MainLoader
+import Core.Main_excel_parser as MainLoader
 from rest_framework import serializers
 import json
 

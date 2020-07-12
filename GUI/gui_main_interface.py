@@ -11,6 +11,7 @@
 from PyQt5 import QtWidgets, QtCore
 import sys
 import os
+import GUI.gui_qt.LoginWindow.ListConfigs.list_configs.list_configs_window as list_of_configs_window
 sys.path.append((os.getcwd()))
 from PyQt5.QtCore import pyqtSlot
 from gui_qt import main_window
@@ -31,6 +32,7 @@ from GUI.System.LanguageAdaptor import Adapter
 from gui_qt import db_connect_editor
 from gui_qt.LoginWindow import login_window
 import requests as rq
+from DAO.list_of_configs import GetListOfFiles
 
 if getattr(sys, 'frozen', False):
     # we are running in a bundle
@@ -39,6 +41,13 @@ if getattr(sys, 'frozen', False):
 else:
     # we are running in a normal Python environment
     bundle_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+class ChooseConfigToOpen(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.ui = list_of_configs_window.Ui_ListConfigs()
+        self.ui.setupUi(self)
 
 
 class LoginWindow(QtWidgets.QWidget):
@@ -52,22 +61,23 @@ class LoginWindow(QtWidgets.QWidget):
     def login_to_designer(self):
         session = rq.Session()
         url = f"http://{self.ui.lineEdit_URL.text()}"
+        login_url = url + '/login/post/login'
         r = 'response_from_server_is_null'
         try:
-            token = session.get(url)
+            token = session.get(login_url)
             data = {
                 'login': f'{self.ui.lineEdit_Login.text()}',
                 'password': f'{self.ui.lineEdit_Password.text()}',
                 'csrfmiddlewaretoken': token
             }
-            r = session.post(url=url, data=data, headers=dict(Referer=url))
+            r = session.post(url=login_url, data=data, headers=dict(Referer=login_url))
             self.status_code = r.status_code
         except Exception as e:
             show_alarm_window(self, "Login failed.", "\nCheck URL !!!")
 
         if self.status_code == 200:
             self.close()
-            w = MainWindow()
+            w = MainWindow(url=url)
             w.show()
 
         if self.status_code == 400:
@@ -75,8 +85,9 @@ class LoginWindow(QtWidgets.QWidget):
 
 
 class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self, url):
         super().__init__()
+        self.url = url
         self.list_of_source_cols_links = []
         self.list_of_receiver_cols_links = []
         self.config_dict = {}
@@ -123,8 +134,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.ui.actionConfig_Editor.setDisabled(True)
         self.ui.actionDictionary.setDisabled(True)
-        self.connection_tread = CreateConnection(self)
-
+        self.connection_thread = CreateConnection(self)
+        self.take_list_of_configs = GetListOfFiles(self.url)
         self.tabWidget = QtWidgets.QTabWidget(self.ui.centralwidget)
         self.tabWidget.setObjectName("tabWidget")
         self.ui.gridLayout_2.addWidget(self.tabWidget, 0, 0, 1, 1)
@@ -140,11 +151,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.actionEditor.triggered.connect(self.show_editor)
         self.ui.actionDictionary.triggered.connect(self.show_dictionary)
         self.ui.actionClose_Project.triggered.connect(self.close_project_data)
-        self.connection_tread.task_done.connect(self.created_connection, QtCore.Qt.QueuedConnection)
-        self.connection_tread.task_done_error.connect(self.conn_err, QtCore.Qt.QueuedConnection)
-        self.connection_tread.started.connect(self.show_conn_status, QtCore.Qt.QueuedConnection)
+        self.connection_thread.task_done.connect(self.created_connection, QtCore.Qt.QueuedConnection)
+        self.connection_thread.task_done_error.connect(self.conn_err, QtCore.Qt.QueuedConnection)
+        self.connection_thread.started.connect(self.show_conn_status, QtCore.Qt.QueuedConnection)
+        self.take_list_of_configs.task_done.connect(self.get_list_of_configs_from_server, QtCore.Qt.QueuedConnection)
+        self.take_list_of_configs.task_done_error.connect(self.get_list_of_configs_from_server_error, QtCore.Qt.QueuedConnection)
 
-
+    def get_list_of_configs_from_server_error(self, error):
+        show_alarm_window(self, message=error)
 
     def close_project_data(self):
 
@@ -581,35 +595,45 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.menuSystem.setDisabled(False)
 
         show_error_window(self, err)
-        self.connection_tread.terminate()
+        self.connection_thread.terminate()
         self.setCursor(QtCore.Qt.ArrowCursor)
         self.close_project_data()
         self.ui.statusbar.showMessage(f'Connection failed.')
 
+    def get_list_of_configs_from_server(self, list_of_config_names: dict):
+        self.list_of_configs_window_to_show = ChooseConfigToOpen()
+        self.list_of_configs_window_to_show.show()
+
     def show_open_config(self):
-        path_name_config = QtWidgets.QFileDialog.getOpenFileName(
-            directory=os.path.join(os.getcwd(), 'config'), filter='*.xml')
-        path = os.path.basename(path_name_config[0])
 
-        if path:
-            try:
-                self.path_name_config = path_name_config
-                self.path = path
-                self.close_project_data()
-                self.setWindowTitle(f"Easy Loader [{self.path}]")
-                self.ui.actionConfig_Editor.setChecked(True)
-                self.ui.actionConfig_Editor.triggered.emit(1)
-                self.loggerInst = Logger.Log_info.getInstance(self.path, self.path)
-                self.loggerInst.set_config(self.path)
+        self.take_list_of_configs.start()
 
-                self.config_dict = xml_parse(self.path, self.loggerInst)
-            except Exception as e:
-                show_error_window(self, e)
-                self.close_project_data()
-                self.setCursor(QtCore.Qt.ArrowCursor)
-                return
 
-            self.connection_tread.start()
+
+        #
+        # path_name_config = QtWidgets.QFileDialog.getOpenFileName(
+        #     directory=os.path.join(os.getcwd(), 'config'), filter='*.xml')
+        # path = os.path.basename(path_name_config[0])
+        #
+        # if path:
+        #     try:
+        #         self.path_name_config = path_name_config
+        #         self.path = path
+        #         self.close_project_data()
+        #         self.setWindowTitle(f"Easy Loader [{self.path}]")
+        #         self.ui.actionConfig_Editor.setChecked(True)
+        #         self.ui.actionConfig_Editor.triggered.emit(1)
+        #         self.loggerInst = Logger.Log_info.getInstance(self.path, self.path)
+        #         self.loggerInst.set_config(self.path)
+        #
+        #         self.config_dict = xml_parse(self.path, self.loggerInst)
+        #     except Exception as e:
+        #         show_error_window(self, e)
+        #         self.close_project_data()
+        #         self.setCursor(QtCore.Qt.ArrowCursor)
+        #         return
+        #
+        #     self.connection_thread.start()
 
     def show_windows(self):
         try:

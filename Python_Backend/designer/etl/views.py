@@ -16,3 +16,8 @@ def get_info(request, name, mode):
     except:
         return HttpResponse(request)
     return JsonResponse(dict_config)
+
+
+def get_list_configs(request):
+    data = os.listdir(os.path.join(os.getcwd(),'config'))
+    return JsonResponse({'list':data})

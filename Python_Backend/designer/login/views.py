@@ -21,7 +21,6 @@ def login_designer(request):
             return HttpResponse(request, status=400)
 
 
-
 def get_or_create_csrf_token(request):
     token = request.META.get('CSRF_COOKIE', None)
     if token is None:
